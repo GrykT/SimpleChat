@@ -1,0 +1,26 @@
+﻿{% for item in object_list %}
+<div class="row">
+    <div class="col-3">
+        <p>名前</p>
+    </div>
+    <div class="col-9">
+        <p>{{ item.name }}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <p>発言</p>
+    </div>
+    <div class="col-9">
+        <p>{{ item.name }}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <p>投稿日時</p>
+    </div>
+    <div class="col-9">
+        <p>{{ item.talk_datetime|date:"Y/m/d G:i:s" }}</p>
+    </div>
+</div>
+{% endfor %}

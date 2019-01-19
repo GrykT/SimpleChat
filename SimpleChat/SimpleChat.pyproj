@@ -31,6 +31,9 @@
   <ItemGroup>
     <Compile Include="app\admin.py" />
     <Compile Include="app\apps.py" />
+    <Compile Include="app\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\migrations\__init__.py" />
     <Compile Include="app\models.py" />
     <Compile Include="app\tests.py" />
@@ -47,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\Talk_form.html" />
+    <Content Include="app\templates\app\Talk_list.html" />
+    <Content Include="app\templates\app\Users_form.html" />
+    <Content Include="app\templates\app\_base.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
