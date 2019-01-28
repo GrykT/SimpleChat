@@ -1,23 +1,50 @@
 ﻿{% extends "./_base.html" %}
 
+
 {% block content %}
-{{ form.certifications.errors }}
+<h2>チャット画面</h2>
+<h4>入室者：{% for usr in insite_users %}<small><strong>{{ usr.name }}、</strong></small>{% endfor %}</h4>
+<form class="form-controld" method="post">
+<div>
+    名前：{{ view.request.session.name }}
+</div>
+{% csrf_token %}
+{{ form }}
+<input class="btn btn-default" type="submit" value="発言">
+<a class="btn btn-outline-secondary" href="{% url 'room' %}">更新</a>
+
+<div class="float-right">
+    <a class="btn btn-outline-secondary" href="{% url 'exit' %}">退室</a>
+</div>
+</form>
 
 <div class="container">
-    <div class="row">
-        <div class="col-3">
-            {{ view.request.User.name }}
-        </div>
-        <form method="post">
-        {% csrf_token %}
-        <table>
-            {{ form }}
-        </table>
-    <input type="submit">
-</form>
+<div class="row">
+    <div class="col-2">
+        <p>名前</p>
+    </div>
+    <div class="col-8">
+        <p>発言</p>
+    </div>
+    <div class="col-2">
+        <p>投稿日時</p>
     </div>
 </div>
-<ul>
-    {{ view.request.session.user_name.name }}
-</ul>
+{% for item in talk_list %}
+<div class="row">
+    <div class="col-2">
+        <mark>{{ item.user_id.name }}</mark>
+    </div>
+    <div class="col-8">
+        <p>{{ item.talk_text }}</p>
+    </div>
+    <div class="col-2">
+        <em>{{ item.talk_datetime|date:"Y/m/d G:i:s" }}</em>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{{ form.certifications.errors }}
+
 {% endblock %}
