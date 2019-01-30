@@ -1,38 +1,15 @@
-from django.shortcuts import render, redirect, get_object_or_404
-
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from django.views.generic import ListView,CreateView
-from django.views.generic.edit import CreateView
-from django.contrib import messages  # メッセージフレームワーク
 
 from django.shortcuts import render,redirect
-from django.http import HttpRequest
-from django.template import RequestContext
-from datetime import datetime
-
 from .models import Talk, Users
 from .forms import TalkForm,UsersForm
 
 # Create your views here.
 SESSION_KEY_ID = 'id'
 SESSION_KEY_NAME = 'name'
-
-def index(request):
-            
-            return render(
-                request,
-                "app/index.html",
-                {
-                    'content': "かくにんにすぎない"
-                }
-)
-
-def reload(request):
-#    if(request.session[SESSION_KEY_ID])
-        #セッションがあるあいだは有効
-    return redirect('room/')
 
 def exit(request):
     if(request.session[SESSION_KEY_ID]):
@@ -54,10 +31,6 @@ class UsersCreateView(CreateView):
 
         return super().form_valid(form)
 
-    def form_invalid(self, form):
-        messages.warning(self.request, "入室できませんでした")
-        return super().form_invalid(form)
-
 
 
 class TalkCreateView(CreateView):
@@ -65,8 +38,6 @@ class TalkCreateView(CreateView):
     form_class = TalkForm
     success_url = reverse_lazy('room')
     
-    title = "でんでんでんででん"
-
     def form_valid(self, form):
         form.instance.user_id =  Users.objects.get(
                                     id=self.request.session[SESSION_KEY_ID]

@@ -1,5 +1,4 @@
 from django.db import models
-from django.core import validators
 from django.core.validators import RegexValidator, slug_re
 from django.utils import timezone
 # Create your models here.

@@ -3,18 +3,13 @@
 {% block content %}
 <h2>入室画面</h2>
 {{ form.certifications.errors }}
+{% if form.errors %}
+  {{ form.non_field_errors }}
+{% endif %}
 <form class="form-horizontal" method="post">
 {% csrf_token %}
     {{ form.as_p }}
 <input class="btn btn-default" type="submit" value="入室">
 </form>
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li>{% if message.tags %} "{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-{% endblock %}
+{% endblock %}  
