@@ -43,7 +43,7 @@
     </Compile>
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
-    <Compile Include="SimpleChat\local_setting.py">
+    <Compile Include="SimpleChat\local_settings.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="manage.py" />
