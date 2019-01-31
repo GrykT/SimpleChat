@@ -124,9 +124,10 @@ USE_TZ = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-#STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
 #STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 try:
     from .local_settings import *
