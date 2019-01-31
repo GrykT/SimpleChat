@@ -261,7 +261,6 @@ __pycache__/
 *.pyc
 
 # django deploy
-SimpleChat/
 staticfiles
 local_settings.py
 db.sqlite3
