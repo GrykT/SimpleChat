@@ -1,1 +1,1 @@
-web: gunicorn simple-legacy-chat.wsgi --log-file -
+web: gunicorn SimpleChat.wsgi --log-file -
