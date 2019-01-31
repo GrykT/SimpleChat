@@ -266,6 +266,7 @@ local_settings.py
 db.sqlite3
 *.py[co]
 env/
+env2/
 obj/
 
 .vs/
