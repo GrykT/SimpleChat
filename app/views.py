@@ -24,7 +24,8 @@ class UsersCreateView(CreateView):
     model = Users
     form_class = UsersForm
     success_url = reverse_lazy('room')
-    
+    template_name = 'app/Users_form.html'
+
     def form_valid(self, form):
         self.request.session[SESSION_KEY_ID] = self.request.POST['id']
         self.request.session[SESSION_KEY_NAME] = self.request.POST['name']
@@ -37,7 +38,8 @@ class TalkCreateView(CreateView):
     model = Talk
     form_class = TalkForm
     success_url = reverse_lazy('room')
-    
+    template_name = 'app/Talk_form.html'
+
     def form_valid(self, form):
         form.instance.user_id =  Users.objects.get(
                                     id=self.request.session[SESSION_KEY_ID]
